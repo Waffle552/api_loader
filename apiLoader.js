@@ -18,7 +18,7 @@ new (function() {
     var descriptor = {
         blocks: [
             // Block type, block name, function name
-            ['w', 'Api Connect', 'connect', 'test'],
+            ['w', 'Api Connect %s test', 'connect', 'test'],
         ]
     };
 
