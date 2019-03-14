@@ -9,16 +9,16 @@ new (function() {
         return {status: 2, msg: 'Ready'};
     };
 
-    ext.connect = function() {
+    ext.connect = function(test) {
         // Code that gets executed when the block is run
-        console.log('test')
+        console.log(test)
     };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             // Block type, block name, function name
-            [' ', 'Api Connect', 'connect'],
+            ['w', 'Api Connect', 'connect', 'test'],
         ]
     };
 
