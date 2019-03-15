@@ -1,24 +1,36 @@
-new (function() {
+new (function () {
     var ext = this
+    var connected = false
+    const io = require('socket.io-client');
+    console.log(io)
+    const socket = io.connect('scratch.denmarkcommunityschool.xyz/socket');
+
+    socket.on('connect', () => {
+        console.log('Successfully connected!');
+        connected = true;
+    });
     // Cleanup function when the extension is unloaded
-    ext._shutdown = function() {};
+    ext._shutdown = function () { };
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
-    ext._getStatus = function() {
-        return {status: 2, msg: 'Ready'};
+    ext._getStatus = function () {
+        return { status: 2, msg: 'Ready' };
     };
 
-    ext.connect = function(test) {
+    ext.connected = function () {
         // Code that gets executed when the block is run
-        console.log(test)
+        return connected
     };
+    ext.getUserData = function () {
+
+    }
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             // Block type, block name, function name
-            ['w', 'Api Connect %s test', 'connect', 'test'],
+            ['h', 'Starts when connected to socket', 'connected'],
         ]
     };
 
